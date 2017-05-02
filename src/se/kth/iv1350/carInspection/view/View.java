@@ -36,12 +36,13 @@ public class View {
         String number = "5461234";
         String holder = "Anders Andersson";
         YearMonth expiryDate = YearMonth.of(2018,2) ;
+        
         int CVC = 456;
-
         CreditCard creditCard = new CreditCard(pin, number, holder, expiryDate, CVC);
         controller.payment(creditCard,cost);
 
         controller.nextInspection();
+
 
     }
 

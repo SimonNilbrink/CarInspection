@@ -11,6 +11,6 @@ public class Receipt {
     }
 
     public String receiptPrintOut(){
-        return cost + "was credited on card: " + cardNumber;
+        return cost + " was credited on card: " + cardNumber;
     }
 }
