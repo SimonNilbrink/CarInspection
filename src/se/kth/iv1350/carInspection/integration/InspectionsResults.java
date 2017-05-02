@@ -13,7 +13,7 @@ public class InspectionsResults {
      * @param name
      * @param result
      */
-    public ItemsForInspections(String name, String result){
+    public InspectionsResults(String name, String result){
         this.name = name;
         this.result = result;
 
@@ -22,14 +22,14 @@ public class InspectionsResults {
     /**
      *
      */
-    public getName(){
+    public String getName(){
         return name;
     }
 
     /**
      *
      */
-    public getResult(){
+    public String getResult(){
         return result;
     }
 }

@@ -18,5 +18,5 @@ public class Printer {
     }
 
 
-    public void printResult ()
+    //public void printResult (Result result) {System.out.println(result.resultPrintOut())}
 }

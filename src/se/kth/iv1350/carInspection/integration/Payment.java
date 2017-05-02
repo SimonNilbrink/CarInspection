@@ -7,7 +7,7 @@ import se.kth.iv1350.carInspection.model.Receipt;
 
 
 public class Payment {
-    Printer printer = new Printer();
+
 
     /**
      *
@@ -27,7 +27,8 @@ public class Payment {
      * @param cost
      * @param creditCard
      */
-    public void printReceipt(double cost, CreditCard creditCard){
+    public static void printReceipt(double cost, CreditCard creditCard){
+        Printer printer = new Printer();
         Receipt receipt = new Receipt(cost, creditCard);
         printer.printReceipt(receipt);
 

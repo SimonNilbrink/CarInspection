@@ -40,6 +40,9 @@ public class View {
 
         CreditCard creditCard = new CreditCard(pin, number, holder, expiryDate, CVC);
         controller.payment(creditCard,cost);
+
+        controller.nextInspection();
+
     }
 
 }
