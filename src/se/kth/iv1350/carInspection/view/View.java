@@ -1,9 +1,12 @@
 package se.kth.iv1350.carInspection.view;
 
 import se.kth.iv1350.carInspection.controller.Controller;
+import se.kth.iv1350.carInspection.model.CreditCard;
+
+import java.time.YearMonth;
 
 /**
- * Created by dinimac on 2017-05-02.
+ *
  */
 
 public class View {
@@ -27,8 +30,16 @@ public class View {
 
 
         String regNo = "ABS123";
-        controller.checkForInspections(regNo);
+        double cost = controller.checkForInspections(regNo);
 
+        int pin = 1234;
+        String number = "5461234";
+        String holder = "Anders Andersson";
+        YearMonth expiryDate = YearMonth.of(2018,2) ;
+        int CVC = 456;
+
+        CreditCard creditCard = new CreditCard(pin, number, holder, expiryDate, CVC);
+        controller.payment(creditCard,cost);
     }
 
 }

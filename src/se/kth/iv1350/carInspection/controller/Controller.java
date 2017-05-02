@@ -2,14 +2,16 @@ package se.kth.iv1350.carInspection.controller;
 
 import se.kth.iv1350.carInspection.integration.DatabaseManager;
 import se.kth.iv1350.carInspection.model.Car;
+import se.kth.iv1350.carInspection.model.CreditCard;
 import se.kth.iv1350.carInspection.model.Inspection;
 import se.kth.iv1350.carInspection.model.garage.Garage;
+import se.kth.iv1350.carInspection.integration.Payment;
+
+
 import java.util.List;
 import java.util.ArrayList;
 
-/**
- * Created by dinimac on 2017-05-02.
- */
+
 public class Controller {
 
     private Garage garage;
@@ -43,5 +45,11 @@ public class Controller {
 
     }
 
+    /**
+     *
+     */
 
+    public void payment(CreditCard creditCard, double cost) {
+        Payment.getPaymentAuthorization(creditCard,cost);
+    }
 }
