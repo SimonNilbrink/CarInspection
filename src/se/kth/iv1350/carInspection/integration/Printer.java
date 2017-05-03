@@ -1,7 +1,6 @@
 package se.kth.iv1350.carInspection.integration;
 
 import se.kth.iv1350.carInspection.model.Receipt;
-import se.kth.iv1350.carInspection.model.Result;
 
 /**
  *

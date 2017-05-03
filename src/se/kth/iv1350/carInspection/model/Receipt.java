@@ -5,7 +5,7 @@ public class Receipt {
     private double cost;
     private String cardNumber;
 
-    public Receipt(double cost, CreditCard creditCard){
+    public Receipt(int cost, CreditCard creditCard){
         this.cost = cost;
         this.cardNumber = creditCard.getNumber();
     }

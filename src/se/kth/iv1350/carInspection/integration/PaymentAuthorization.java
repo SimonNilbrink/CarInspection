@@ -11,12 +11,12 @@ public class PaymentAuthorization {
      * Requests authorization for the specified payment.
      *
      * @param card   The card used for the payment.
-     * @param amount The amount to pay.
+     * @param cost The amount to pay.
      * @return <code>true</code> if the payment is authorized,
      *         <code>false</code> if it is not. This dummy implementation always
      *         returns <code>true</code>.
      */
-    public static boolean authorizePayment(CreditCard card, double amount) {
+    public static boolean authorizePayment(CreditCard card, int cost) {
         return true;
     }
 }

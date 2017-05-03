@@ -1,12 +1,15 @@
 package se.kth.iv1350.carInspection.controller;
 
 import se.kth.iv1350.carInspection.integration.DatabaseManager;
+import se.kth.iv1350.carInspection.integration.ItemsForInspections;
 import se.kth.iv1350.carInspection.model.Car;
 import se.kth.iv1350.carInspection.model.CreditCard;
 import se.kth.iv1350.carInspection.model.Inspection;
 import se.kth.iv1350.carInspection.model.Result;
 import se.kth.iv1350.carInspection.model.garage.Garage;
 import se.kth.iv1350.carInspection.integration.Payment;
+
+import java.util.List;
 
 
 public class Controller {
@@ -16,6 +19,7 @@ public class Controller {
     private DatabaseManager dbManager = new DatabaseManager();
     private Inspection inspection;
     private Car car;
+    List<ItemsForInspections> inspectionsToDo;
 
     /**
      * @param garage Specific garage for inspections.
@@ -36,16 +40,16 @@ public class Controller {
     }
 
 
-
-    public double checkForInspections(String regNo){
+    public int checkForInspections(String regNo){
         car = new Car(regNo);
         inspection = new Inspection(dbManager, car);
         return inspection.calculateCost();
 
     }
 
-    public void nextInspection(){
-        inspection.getNextInspection();
+    public List<ItemsForInspections> startInspections(){
+        inspectionsToDo = inspection.getInspections();
+        return inspectionsToDo;
     }
 
 
@@ -54,11 +58,13 @@ public class Controller {
         result.printResult();
 
     }
-    /**
-     *
-     */
 
-    public void payment(CreditCard creditCard, double cost) {
+    public void saveResult(int index, String passOrFail){
+        dbManager.saveResultToDatabase(inspectionsToDo.get(index).getNameOfInspection(), passOrFail);
+    }
+
+
+    public void payment(CreditCard creditCard, int cost) {
         Payment.getPaymentAuthorization(creditCard,cost);
     }
 

@@ -10,7 +10,6 @@ import se.kth.iv1350.carInspection.model.Car;
 public class DatabaseManager {
 
     private List<ItemsForInspections> inspectionList;
-    //private List<InspectionsResults> resultList;
 
 
     /**
@@ -18,11 +17,14 @@ public class DatabaseManager {
      */
     public DatabaseManager() {
         createInspectionList();
-        //createResultList();
     }
 
 
-
+    /**
+     *
+     * @param car
+     * @return
+     */
     public List<ItemsForInspections> getInspections(Car car){
         List<ItemsForInspections> inspectionsToDo = new ArrayList<>();
         if(car.getRegNo().equals("ABS123")) {
@@ -42,14 +44,18 @@ public class DatabaseManager {
 
     private void createInspectionList() {
         inspectionList = new ArrayList<>();
-        inspectionList.add(new ItemsForInspections("Wheels", 100, "Fail"));
+        inspectionList.add(new ItemsForInspections("Wheels", 100, "Pass"));
         inspectionList.add(new ItemsForInspections("Gearbox", 150, "Fail"));
         inspectionList.add(new ItemsForInspections("Lights", 50, "Fail"));
-        inspectionList.add(new ItemsForInspections("Breaks", 100, "Fail"));
+        inspectionList.add(new ItemsForInspections("Breaks", 100, "Pass"));
         inspectionList.add(new ItemsForInspections("Engine", 200, "Fail"));
     }
 
-
+    /**
+     *
+     * @param nameOfInspection
+     * @param resultOfInspection
+     */
     public void saveResultToDatabase(String nameOfInspection, String resultOfInspection){
         for (int i = 0; i < 5; i++) {
             if (nameOfInspection.equals(inspectionList.get(i).getNameOfInspection())){
@@ -57,23 +63,5 @@ public class DatabaseManager {
             }
         }
     }
-
-
-
-//
-//     public void createResultList(){
-//        resultList = new ArrayList<>();
-//        resultList.add(new InspectionsResults("Wheels", "Fail"));
-//        resultList.add(new InspectionsResults("Gearbox", "Fail"));
-//        resultList.add(new InspectionsResults("Lights", "Fail"));
-//        resultList.add(new InspectionsResults("Breaks", "Fail"));
-//        resultList.add(new InspectionsResults("Engine", "Fail"));
-//
-//    }
-    //
-
-
-
-
 }
 

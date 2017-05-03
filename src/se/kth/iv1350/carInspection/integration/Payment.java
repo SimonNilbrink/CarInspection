@@ -14,7 +14,7 @@ public class Payment {
      * @param creditCard
      * @param cost
      */
-    public static void getPaymentAuthorization (CreditCard creditCard, double cost) {
+    public static void getPaymentAuthorization (CreditCard creditCard, int cost) {
         if (PaymentAuthorization.authorizePayment(creditCard,cost))
             printReceipt(cost, creditCard);
         else
@@ -27,7 +27,7 @@ public class Payment {
      * @param cost
      * @param creditCard
      */
-    public static void printReceipt(double cost, CreditCard creditCard){
+    public static void printReceipt(int cost, CreditCard creditCard){
         Receipt receipt = new Receipt(cost, creditCard);
         Printer.printReceipt(receipt);
 

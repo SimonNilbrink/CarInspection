@@ -18,27 +18,17 @@ public class Inspection {
         this.inspectionListToDo = dbManager.getInspections(car);
     }
 
-    public double calculateCost () {
-        double cost = 0;
+    public int calculateCost () {
+        int cost = 0;
         for (int i = 0; i < inspectionListToDo.size(); i++) {
             cost += inspectionListToDo.get(i).getPrice();
         }
         return cost;
     }
 
-    public void getNextInspection(){
-        for (int i = 0; i < inspectionListToDo.size(); i++) {
-            System.out.println("Part to inspect: " + inspectionListToDo.get(i).getNameOfInspection());
-            saveResult(i);
-        }
 
+    public List<ItemsForInspections> getInspections(){
+        return inspectionListToDo;
     }
 
-    private void saveResult(int index){
-        String passOrFail;
-        java.util.Scanner in = new java.util.Scanner(System.in);
-        System.out.println("Enter result, Pass or Fail.");
-        passOrFail = in.next();
-        dbManager.saveResultToDatabase(inspectionListToDo.get(index).getNameOfInspection(), passOrFail);
-    }
 }
