@@ -11,6 +11,10 @@ public class Receipt {
     }
 
     public String receiptPrintOut(){
-        return cost + " was credited on card: " + cardNumber;
+        return
+                "\n*****RECEIPT*****" +
+                "\nTotal cost: " + cost +
+                "\nCredit Card: " + cardNumber +
+                "\n**END OF RECEIPT**\n";
     }
 }

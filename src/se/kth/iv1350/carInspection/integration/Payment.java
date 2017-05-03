@@ -28,9 +28,8 @@ public class Payment {
      * @param creditCard
      */
     public static void printReceipt(double cost, CreditCard creditCard){
-        Printer printer = new Printer();
         Receipt receipt = new Receipt(cost, creditCard);
-        printer.printReceipt(receipt);
+        Printer.printReceipt(receipt);
 
     }
 

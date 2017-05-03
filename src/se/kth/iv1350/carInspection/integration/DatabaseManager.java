@@ -33,7 +33,6 @@ public class DatabaseManager {
             }
         }
         return inspectionsToDo;
-
     }
 
 
@@ -51,7 +50,7 @@ public class DatabaseManager {
     }
 
 
-    public void saveResult(String nameOfInspection, String resultOfInspection){
+    public void saveResultToDatabase(String nameOfInspection, String resultOfInspection){
         for (int i = 0; i < 5; i++) {
             if (nameOfInspection.equals(inspectionList.get(i).getNameOfInspection())){
                 inspectionList.set(i, new ItemsForInspections(inspectionList.get(i).getNameOfInspection(), inspectionList.get(i).getPrice(), resultOfInspection));

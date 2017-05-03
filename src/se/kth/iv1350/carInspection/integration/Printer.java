@@ -1,22 +1,20 @@
 package se.kth.iv1350.carInspection.integration;
 
 import se.kth.iv1350.carInspection.model.Receipt;
+import se.kth.iv1350.carInspection.model.Result;
 
 /**
  *
  */
 public class Printer {
 
-    /**
-     *
-     */
-    public Printer () {
-    }
-
-     void printReceipt (Receipt receipt) {
-        System.out.println(receipt.receiptPrintOut());
-    }
 
 
-    //public void printResult (Result result) {System.out.println(result.resultPrintOut())}
+     public static void printReceipt (Receipt receipt) {
+         System.out.println(receipt.receiptPrintOut());
+     }
+
+
+
+    public static void printResult (String printOut) {System.out.println(printOut);}
 }

@@ -26,7 +26,7 @@ public class ItemsForInspections{
 
     public String getNameOfInspection(){ return name;}
 
-    String getResult(){
+    public String getResult(){
         return result;
     }
 

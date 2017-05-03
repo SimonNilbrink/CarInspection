@@ -4,8 +4,6 @@ import se.kth.iv1350.carInspection.integration.DatabaseManager;
 import se.kth.iv1350.carInspection.integration.ItemsForInspections;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class Inspection {
@@ -29,15 +27,18 @@ public class Inspection {
     }
 
     public void getNextInspection(){
-        java.util.Scanner in = new java.util.Scanner(System.in);
-        String passOrFail;
         for (int i = 0; i < inspectionListToDo.size(); i++) {
-            System.out.println(inspectionListToDo.get(i).getNameOfInspection());
-            passOrFail = in.next();
-            dbManager.saveResult(inspectionListToDo.get(i).getNameOfInspection(), passOrFail);
+            System.out.println("Part to inspect: " + inspectionListToDo.get(i).getNameOfInspection());
+            saveResult(i);
         }
 
+    }
 
-
+    private void saveResult(int index){
+        String passOrFail;
+        java.util.Scanner in = new java.util.Scanner(System.in);
+        System.out.println("Enter result, Pass or Fail.");
+        passOrFail = in.next();
+        dbManager.saveResultToDatabase(inspectionListToDo.get(index).getNameOfInspection(), passOrFail);
     }
 }
