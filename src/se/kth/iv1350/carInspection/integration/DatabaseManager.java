@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import se.kth.iv1350.carInspection.model.Car;
 
 /**
- *
+ * All calls for database goes through here. No other layer can call database.
  */
 public class DatabaseManager {
 
@@ -13,7 +13,7 @@ public class DatabaseManager {
 
 
     /**
-     *
+     * Creates a new instance with a dummy "database".
      */
     public DatabaseManager() {
         createInspectionList();
@@ -21,9 +21,10 @@ public class DatabaseManager {
 
 
     /**
+     * Takes all the failed inspections and creates a new list for inspector to perform.
      *
-     * @param car
-     * @return
+     * @param car The car that is being inspected.
+     * @return List of inspections for the car that is being inspected.
      */
     public List<ItemsForInspections> getInspections(Car car){
         List<ItemsForInspections> inspectionsToDo = new ArrayList<>();
@@ -52,9 +53,10 @@ public class DatabaseManager {
     }
 
     /**
+     * Saves the result from each inspection to database.
      *
-     * @param nameOfInspection
-     * @param resultOfInspection
+     * @param nameOfInspection A specific inspection item.
+     * @param resultOfInspection The result of the specific inspection item.
      */
     public void saveResultToDatabase(String nameOfInspection, String resultOfInspection){
         for (int i = 0; i < 5; i++) {

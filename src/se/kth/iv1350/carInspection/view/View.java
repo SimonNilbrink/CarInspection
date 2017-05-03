@@ -8,14 +8,14 @@ import java.time.YearMonth;
 import java.util.List;
 
 /**
- *
+ * Placeholder for the view.
  */
 
 public class View {
     private Controller controller;
 
     /**
-     * Constructor for new instance that will use the specified contrller for all operations.
+     * Constructor for new instance that will use the specified controller for all system operations.
      *
      * @param controller Controller for system operations.
      */
@@ -25,7 +25,7 @@ public class View {
     }
 
     /**
-     *
+     * Calls for all system operations and input, output for inspector.
      */
     public void start () {
         controller.initiateNewInspection();
