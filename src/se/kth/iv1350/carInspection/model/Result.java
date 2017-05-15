@@ -3,6 +3,7 @@ package se.kth.iv1350.carInspection.model;
 
 import se.kth.iv1350.carInspection.integration.DatabaseManager;
 import se.kth.iv1350.carInspection.integration.ItemsForInspections;
+import se.kth.iv1350.carInspection.integration.NotValidRegNoException;
 import se.kth.iv1350.carInspection.integration.Printer;
 import java.util.List;
 
@@ -20,7 +21,12 @@ public class Result {
      * @param car Car that is being inspected.
      */
     public Result(DatabaseManager dbManager, Car car){
-        this.resultList =  dbManager.getInspections(car);
+        try {
+            this.resultList = dbManager.getInspections(car);
+        }catch(NotValidRegNoException e){
+            // Just to save our asses.
+        }
+
     }
 
     /**

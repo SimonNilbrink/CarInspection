@@ -2,6 +2,7 @@ package se.kth.iv1350.carInspection.controller;
 
 import se.kth.iv1350.carInspection.integration.DatabaseManager;
 import se.kth.iv1350.carInspection.integration.ItemsForInspections;
+import se.kth.iv1350.carInspection.integration.NotValidRegNoException;
 import se.kth.iv1350.carInspection.model.Car;
 import se.kth.iv1350.carInspection.model.CreditCard;
 import se.kth.iv1350.carInspection.model.Inspection;
@@ -51,10 +52,14 @@ public class Controller {
      * @return The total cost of the Inspection.
      */
 
-    public int checkForInspections(String regNo){
-        car = new Car(regNo);
-        inspection = new Inspection(dbManager, car);
-        return inspection.calculateCost();
+    public int checkForInspections(String regNo) throws OperationFailedException{
+        try {
+            car = new Car(regNo);
+            inspection = new Inspection(dbManager, car);
+            return inspection.calculateCost();
+        } catch (NotValidRegNoException e) {
+            throw new OperationFailedException("Not valid registration number", e);
+        }
 
     }
 

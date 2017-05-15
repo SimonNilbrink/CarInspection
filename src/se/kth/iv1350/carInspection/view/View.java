@@ -1,6 +1,7 @@
 package se.kth.iv1350.carInspection.view;
 
 import se.kth.iv1350.carInspection.controller.Controller;
+import se.kth.iv1350.carInspection.controller.OperationFailedException;
 import se.kth.iv1350.carInspection.integration.ItemsForInspections;
 import se.kth.iv1350.carInspection.model.CreditCard;
 
@@ -28,12 +29,17 @@ public class View {
      * Calls for all system operations and input, output for inspector.
      */
     public void start () {
+        int cost;
         controller.initiateNewInspection();
-
-
         String regNo = "ABS123";
-        int cost = controller.checkForInspections(regNo);
-        System.out.println("Total cost for inspection: " + cost);
+
+        try {
+            cost = controller.checkForInspections(regNo);
+            System.out.println("Total cost for inspection: " + cost);
+        }catch (OperationFailedException e){
+            System.out.println("Not Valid register number");
+        }
+
 
         int pin = 1234;
         String number = "5461234";
@@ -42,6 +48,7 @@ public class View {
         int CVC = 456;
         CreditCard creditCard = new CreditCard(pin, number, holder, expiryDate, CVC);
         controller.payment(creditCard,cost);
+
 
 
         java.util.Scanner in = new java.util.Scanner(System.in);

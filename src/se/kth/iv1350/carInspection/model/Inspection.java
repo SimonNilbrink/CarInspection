@@ -2,13 +2,15 @@ package se.kth.iv1350.carInspection.model;
 
 import se.kth.iv1350.carInspection.integration.DatabaseManager;
 import se.kth.iv1350.carInspection.integration.ItemsForInspections;
+import se.kth.iv1350.carInspection.integration.NotValidRegNoException;
+
 import java.util.List;
 
 /**
  * Represents where the total cost is being calculated and which item to inspect on a specific car.
  */
 public class Inspection {
-    private Car car;
+    private final Car car;
     private DatabaseManager dbManager;
     private List<ItemsForInspections> inspectionListToDo;
 
@@ -18,7 +20,7 @@ public class Inspection {
      * @param dbManager Database manager used for all database calls.
      * @param car Car that is being inspected.
      */
-    public Inspection(DatabaseManager dbManager, Car car) {
+    public Inspection(DatabaseManager dbManager, Car car) throws NotValidRegNoException{
         this.car = car;
         this.dbManager = dbManager;
         this.inspectionListToDo = dbManager.getInspections(car);

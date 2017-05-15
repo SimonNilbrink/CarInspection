@@ -26,15 +26,16 @@ public class DatabaseManager {
      * @param car The car that is being inspected.
      * @return List of inspections for the car that is being inspected.
      */
-    public List<ItemsForInspections> getInspections(Car car){
-        List<ItemsForInspections> inspectionsToDo = new ArrayList<>();
-        if(car.getRegNo().equals("ABS123")) {
+    public List<ItemsForInspections> getInspections(Car car) throws NotValidRegNoException{
+        if (!(car.getRegNo().equals("ABS123")))
+            throw new NotValidRegNoException("Not valid registration number");
 
-            for (int i = 0; i < 5; i++) {
-                if (inspectionList.get(i).getResult().equals("Fail"))
-                    inspectionsToDo.add(inspectionList.get(i));
-            }
+        List<ItemsForInspections> inspectionsToDo = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            if (inspectionList.get(i).getResult().equals("Fail"))
+                inspectionsToDo.add(inspectionList.get(i));
         }
+
         return inspectionsToDo;
     }
 
@@ -61,7 +62,8 @@ public class DatabaseManager {
     public void saveResultToDatabase(String nameOfInspection, String resultOfInspection){
         for (int i = 0; i < 5; i++) {
             if (nameOfInspection.equals(inspectionList.get(i).getNameOfInspection())){
-                inspectionList.set(i, new ItemsForInspections(inspectionList.get(i).getNameOfInspection(), inspectionList.get(i).getPrice(), resultOfInspection));
+                inspectionList.set(i, new ItemsForInspections(inspectionList.get(i).getNameOfInspection(),
+                        inspectionList.get(i).getPrice(), resultOfInspection));
             }
         }
     }
