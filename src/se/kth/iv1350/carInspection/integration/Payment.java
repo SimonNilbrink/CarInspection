@@ -18,8 +18,10 @@ public class Payment {
      * @param cost Total cost of the inspection.
      */
     public static void getPaymentAuthorization (CreditCard creditCard, int cost) {
-        if (PaymentAuthorization.authorizePayment(creditCard,cost))
+        if (PaymentAuthorization.authorizePayment(creditCard,cost)) {
             printReceipt(cost, creditCard);
+            return;
+        }
         else
             return;
     }

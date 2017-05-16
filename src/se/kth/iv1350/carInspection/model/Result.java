@@ -18,15 +18,9 @@ public class Result {
      * Constructor creates an instance of result representing the result from performed inspection.
      *
      * @param dbManager Database manager used for all database calls.
-     * @param car Car that is being inspected.
      */
-    public Result(DatabaseManager dbManager, Car car){
-        try {
-            this.resultList = dbManager.getInspections(car);
-        }catch(NotValidRegNoException e){
-            // Just to save our asses.
-        }
-
+    public Result(DatabaseManager dbManager){
+        this.resultList = dbManager.getInspections();
     }
 
     /**

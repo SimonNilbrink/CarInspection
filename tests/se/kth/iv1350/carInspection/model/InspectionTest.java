@@ -43,12 +43,7 @@ public class InspectionTest {
         assertEquals("Expected cost wrong", expextedCost, cost);
     }
 
-    @Test
-    public void testNumberOfExpectedInspections() {
-        int expectedResult = 3;
-        int result = tempDB.getInspections(tempCar).size();
-        assertEquals("Expected number of inspections wrong", expectedResult, result);
-    }
+
 
     @Test
     public void testIfCorrectInspectionsToDo(){

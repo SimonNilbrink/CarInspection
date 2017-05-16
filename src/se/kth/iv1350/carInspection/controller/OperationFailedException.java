@@ -7,5 +7,13 @@ package se.kth.iv1350.carInspection.controller;
  */
 public class OperationFailedException extends Exception {
 
-    public OperationFailedException(String msg,Exception cause){super(msg,cause);}
+    /**
+     * Constructor creates a new instance representing the condition described in the specified messages.
+     *
+     * @param cause The cause of the excpetion
+     * @param msg A massage for what went wrong.
+     */
+    public OperationFailedException(String msg,Exception cause) {
+        super(msg,cause);
+    }
 }

@@ -10,6 +10,7 @@ import se.kth.iv1350.carInspection.model.Car;
 public class DatabaseManager {
 
     private List<ItemsForInspections> inspectionList;
+    private List<ItemsForInspections> inspectionsToDo;
 
 
     /**
@@ -23,14 +24,10 @@ public class DatabaseManager {
     /**
      * Takes all the failed inspections and creates a new list for inspector to perform.
      *
-     * @param car The car that is being inspected.
      * @return List of inspections for the car that is being inspected.
      */
-    public List<ItemsForInspections> getInspections(Car car) throws NotValidRegNoException{
-        if (!(car.getRegNo().equals("ABS123")))
-            throw new NotValidRegNoException("Not valid registration number");
-
-        List<ItemsForInspections> inspectionsToDo = new ArrayList<>();
+    public List<ItemsForInspections> getInspections(){
+        inspectionsToDo = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             if (inspectionList.get(i).getResult().equals("Fail"))
                 inspectionsToDo.add(inspectionList.get(i));
@@ -39,7 +36,17 @@ public class DatabaseManager {
         return inspectionsToDo;
     }
 
+    /**
+     * Checks if entered reg number are valid and has inspections.
+     *
+     * @param car
+     * @throws NotValidRegNoException are thrown if the registration number are not valid or has no inspections
+     */
+    public void checksValidRegNo(Car car) throws NotValidRegNoException{
+        if (!(car.getRegNo().equals("ABS123")))
+            throw new NotValidRegNoException("Not valid registration number");
 
+    }
     /**
      * Creates a list to represent a real database.
      */

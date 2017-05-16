@@ -45,23 +45,34 @@ public class Controller {
     }
 
     /**
-     * Verifies that there are inspections to be made
-     * for a specific car and returns a cost for the inspections.
+     * Checks if entered registration number are valid and has inspections.
      *
-     * @param regNo Registration number for the car that will be inspected.
-     * @return The total cost of the Inspection.
+     * @param regNo the entered registration number
+     * @throws OperationFailedException is thrown if the check valid reg number fails.
      */
-
-    public int checkForInspections(String regNo) throws OperationFailedException{
-        try {
+    public void checkValidRegNo(String regNo) throws OperationFailedException{
+        try{
             car = new Car(regNo);
-            inspection = new Inspection(dbManager, car);
-            return inspection.calculateCost();
+            dbManager.checksValidRegNo(car);
         } catch (NotValidRegNoException e) {
             throw new OperationFailedException("Not valid registration number", e);
         }
-
     }
+
+
+    /**
+     * Verifies that there are inspections to be made
+     * for a specific car and returns a cost for the inspections.
+     *
+     *
+     * @return The total cost of the Inspection.
+     */
+
+    public int checkForInspections(){
+            inspection = new Inspection(dbManager, car);
+            return inspection.calculateCost();
+    }
+
 
     /**
      * Gets a list of the inspections to be performed.
@@ -78,7 +89,7 @@ public class Controller {
      */
 
     public void getResults(){
-        Result result = new Result(dbManager, car);
+        Result result = new Result(dbManager);
         result.printResult();
 
     }

@@ -30,7 +30,7 @@ public class DatabaseManagerTest {
     @Test
     public void testNumberOfExpectedInspections() {
         int expectedResult = 3;
-        int result = tempDB.getInspections(tempCar).size();
+        int result = tempDB.getInspections().size();
         assertEquals("Expected number of inspections wrong", expectedResult, result);
     }
 
@@ -39,7 +39,7 @@ public class DatabaseManagerTest {
         String testName = "Wheels";
         String testResult = "Fail";
         tempDB.saveResultToDatabase(testName, testResult);
-        List<ItemsForInspections> testList = tempDB.getInspections(tempCar);
+        List<ItemsForInspections> testList = tempDB.getInspections();
         String expectedResult = "WheelsGearboxLightsEngine";
         String result = "";
         for(int i = 0; i < testList.size(); i++)

@@ -9,10 +9,10 @@ import java.util.List;
 /**
  * Represents where the total cost is being calculated and which item to inspect on a specific car.
  */
-public class Inspection {
+public final class Inspection {
     private final Car car;
-    private DatabaseManager dbManager;
-    private List<ItemsForInspections> inspectionListToDo;
+    private final DatabaseManager dbManager;
+    private final List<ItemsForInspections> inspectionListToDo;
 
     /**
      * Constructor creates an instance of inspection representing inspections to be performed for specified car.
@@ -20,10 +20,10 @@ public class Inspection {
      * @param dbManager Database manager used for all database calls.
      * @param car Car that is being inspected.
      */
-    public Inspection(DatabaseManager dbManager, Car car) throws NotValidRegNoException{
+    public Inspection(DatabaseManager dbManager, Car car){
         this.car = car;
         this.dbManager = dbManager;
-        this.inspectionListToDo = dbManager.getInspections(car);
+        this.inspectionListToDo = dbManager.getInspections();
     }
 
     /**
@@ -47,3 +47,4 @@ public class Inspection {
     }
 
 }
+
