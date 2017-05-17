@@ -3,6 +3,7 @@ package se.kth.iv1350.carInspection.integration;
 import java.util.List;
 import java.util.ArrayList;
 import se.kth.iv1350.carInspection.model.Car;
+import se.kth.iv1350.carInspection.view.InspectionStatsView;
 
 /**
  * All calls for database goes through here. No other layer can call database.
@@ -11,7 +12,7 @@ public class DatabaseManager {
 
     private List<ItemsForInspections> inspectionList;
     private List<ItemsForInspections> inspectionsToDo;
-
+    private ResultObserver observer;
 
     /**
      * Creates a new instance with a dummy "database".
@@ -53,10 +54,10 @@ public class DatabaseManager {
 
     private void createInspectionList() {
         inspectionList = new ArrayList<>();
-        inspectionList.add(new ItemsForInspections("Wheels", 100, "Pass"));
+        inspectionList.add(new ItemsForInspections("Wheels", 100, "Fail"));
         inspectionList.add(new ItemsForInspections("Gearbox", 150, "Fail"));
         inspectionList.add(new ItemsForInspections("Lights", 50, "Fail"));
-        inspectionList.add(new ItemsForInspections("Breaks", 100, "Pass"));
+        inspectionList.add(new ItemsForInspections("Breaks", 100, "Fail"));
         inspectionList.add(new ItemsForInspections("Engine", 200, "Fail"));
     }
 
@@ -73,6 +74,26 @@ public class DatabaseManager {
                         inspectionList.get(i).getPrice(), resultOfInspection));
             }
         }
+        notifyObservers(resultOfInspection);
+    }
+
+    /**
+     *Notifies the observing class about new inspection result
+     *
+     * @param resultOfInspection is the result of the inspection
+     */
+    private void notifyObservers(String resultOfInspection) {
+        observer.newResult(resultOfInspection);
+    }
+
+    /**
+     * Adding an observer
+     *
+     * @param observer the specified observer object
+     */
+    public void addObserver(ResultObserver observer){
+        this.observer = observer;
     }
 }
+
 

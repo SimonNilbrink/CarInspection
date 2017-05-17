@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import se.kth.iv1350.carInspection.model.Car;
+import se.kth.iv1350.carInspection.view.InspectionStatsView;
 
 import java.util.List;
 

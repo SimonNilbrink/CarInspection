@@ -2,7 +2,7 @@ package se.kth.iv1350.carInspection.view;
 import java.util.Date;
 
 /**
- * Logs and shows messages
+ * Shows error messages
  */
 public class ErrorMessageHandler {
 

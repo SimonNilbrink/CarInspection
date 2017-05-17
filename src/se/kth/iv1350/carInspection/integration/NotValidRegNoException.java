@@ -1,7 +1,6 @@
 package se.kth.iv1350.carInspection.integration;
 
 
-import com.sun.tools.corba.se.idl.constExpr.Not;
 
 public class NotValidRegNoException extends Exception{
     /**

@@ -1,7 +1,9 @@
 package se.kth.iv1350.carInspection.startup;
 
+import se.kth.iv1350.carInspection.integration.ResultObserver;
 import se.kth.iv1350.carInspection.model.garage.Garage;
 import se.kth.iv1350.carInspection.controller.Controller;
+import se.kth.iv1350.carInspection.view.InspectionStatsView;
 import se.kth.iv1350.carInspection.view.View;
 
 import java.io.IOException;
@@ -19,8 +21,9 @@ public class Main {
      */
     public static void main(String[] args) {
         try {
+            ResultObserver observer = new InspectionStatsView();
             Garage garage = new Garage();
-            Controller controller = new Controller(garage);
+            Controller controller = new Controller(garage,observer);
             View view = new View(controller);
             view.start();
         }catch (IOException e){

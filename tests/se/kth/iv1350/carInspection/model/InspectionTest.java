@@ -5,8 +5,10 @@ import org.junit.Before;
 import org.junit.Test;
 import se.kth.iv1350.carInspection.integration.DatabaseManager;
 import se.kth.iv1350.carInspection.integration.ItemsForInspections;
+import se.kth.iv1350.carInspection.view.InspectionStatsView;
 
 import java.util.List;
+import java.util.Observer;
 
 import static org.junit.Assert.*;
 

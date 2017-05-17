@@ -23,6 +23,10 @@ public class Result {
         this.resultList = dbManager.getInspections();
     }
 
+
+
+
+
     /**
      * Send the formatted result to printer for printout.
      */

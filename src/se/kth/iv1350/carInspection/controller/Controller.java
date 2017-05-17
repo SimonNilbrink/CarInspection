@@ -1,14 +1,12 @@
 package se.kth.iv1350.carInspection.controller;
 
-import se.kth.iv1350.carInspection.integration.DatabaseManager;
-import se.kth.iv1350.carInspection.integration.ItemsForInspections;
-import se.kth.iv1350.carInspection.integration.NotValidRegNoException;
+import se.kth.iv1350.carInspection.integration.*;
 import se.kth.iv1350.carInspection.model.Car;
 import se.kth.iv1350.carInspection.model.CreditCard;
 import se.kth.iv1350.carInspection.model.Inspection;
 import se.kth.iv1350.carInspection.model.Result;
 import se.kth.iv1350.carInspection.model.garage.Garage;
-import se.kth.iv1350.carInspection.integration.Payment;
+
 import java.util.List;
 
 /**
@@ -17,9 +15,8 @@ import java.util.List;
 
 public class Controller {
 
-
     private Garage garage;
-    private DatabaseManager dbManager = new DatabaseManager();
+    private DatabaseManager dbManager;
     private Inspection inspection;
     private Car car;
     List<ItemsForInspections> inspectionsToDo;
@@ -30,8 +27,11 @@ public class Controller {
      * @param garage Specific garage for inspections.
      */
 
-    public Controller(Garage garage){
+    public Controller(Garage garage, ResultObserver observer){
         this.garage = garage;
+        this.dbManager = new DatabaseManager();
+        this.dbManager.addObserver(observer);
+
     }
 
     /**
@@ -93,6 +93,7 @@ public class Controller {
         result.printResult();
 
     }
+
 
     /**
      * Inspector gives result of inspected item. The result saves to the database.
